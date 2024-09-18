@@ -34,11 +34,10 @@ class TestHeaderButton:
     @allure.step('Тест на клик по логотипу Яндекса')
     def test_click_yandex_go_to_dzen(self, driver):
         main_page = BasePageHeader(driver)
-        current_url = Urls.DZEN_URL
 
         with allure.step("Клик по логотипу Яндекса"):
             main_page.yandex_logo_click()
 
         with allure.step("Переход на новую вкладку и проверка URL"):
             main_page.go_to_new_tab(Urls.DZEN_URL)
-            assert current_url == Urls.DZEN_URL
+            assert main_page.get_current_url() == Urls.DZEN_URL

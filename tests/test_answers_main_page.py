@@ -11,16 +11,6 @@ from data import *
 class TestQuestionAnswers:
 
     @allure.title('Проверяем текст ответов в разделе "Вопросы о важном"')
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.get('https://qa-scooter.praktikum-services.ru/')
-        cls.main_page = MainPageBody(cls.driver)
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()
-
     @pytest.mark.parametrize("question_locator, answer_locator, expected_answer", [
         (MainPageLocators.question_0_locator, MainPageLocators.answer_0_locator, Answers.expected_answers[0]),
         (MainPageLocators.question_1_locator, MainPageLocators.answer_1_locator, Answers.expected_answers[1]),
